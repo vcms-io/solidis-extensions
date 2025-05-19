@@ -9,11 +9,11 @@
 </p>
 
 <p align="center">
-  <a href="#overview">Overview</a> •
-  <a href="#supported-extensions">Supported Extensions</a> •
-  <a href="#installation">Installation</a> •
-  <a href="#usage">Usage</a> •
-  <a href="#license">License</a>
+  <a href="#-overview">Overview</a> •
+  <a href="#-supported-extensions">Supported Extensions</a> •
+  <a href="#-installation">Installation</a> •
+  <a href="#-usage">Usage</a> •
+  <a href="#-license">License</a>
 </p>
 
 <p align="center">
