@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="../..">Back to @vcms-io/solidis-extensions</a>
+  <a href="../../../README.md">Back to @vcms-io/solidis-extensions</a>
 </p>
 
 ## 🔍 Overview
