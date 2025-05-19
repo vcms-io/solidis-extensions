@@ -1,6 +1,6 @@
 {
   "name": "@vcms-io/solidis-extensions",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "Jay Lee <jay@vendit.co.kr>",
   "description": "Extensions for solidis",
   "repository": {

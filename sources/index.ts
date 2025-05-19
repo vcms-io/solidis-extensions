@@ -13,6 +13,7 @@ export async function spinLock(
     logger?: { debug: (...parameters: unknown[]) => unknown };
     maxAttempts?: number;
     retryInterval?: number;
+    prefix?: string;
   },
 ) {
   if (
@@ -26,27 +27,34 @@ export async function spinLock(
     );
   }
 
-  const { logger, maxAttempts = 100, retryInterval = 50 } = options ?? {};
+  const {
+    logger,
+    maxAttempts = 100,
+    retryInterval = 50,
+    prefix = 'lock',
+  } = options ?? {};
+
+  const lockKey = `${prefix ? `${prefix}:` : ''}${key}`;
 
   let attempts = 0;
 
   while (attempts < maxAttempts) {
-    const acquired = await this.set(key, '1', {
+    const acquired = await this.set(lockKey, '1', {
       expireInMilliseconds: maxAttempts * retryInterval * 2,
       setIfKeyNotExists: true,
     });
 
     if (acquired) {
-      logger?.debug(`Acquired lock for key '${key}'`);
+      logger?.debug(`Acquired lock for key '${lockKey}'`);
 
       return {
         unlock: async () => {
           try {
-            await this.del(key);
+            await this.del(lockKey);
 
-            logger?.debug(`Unlocked key '${key}'`);
+            logger?.debug(`Unlocked key '${lockKey}'`);
           } catch (error) {
-            logger?.debug(`Failed to unlock for key '${key}'`, error);
+            logger?.debug(`Failed to unlock for key '${lockKey}'`, error);
           }
         },
       };
