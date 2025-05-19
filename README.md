@@ -24,19 +24,19 @@
   <a href="https://github.com/vcms-io/solidis"><img src="https://img.shields.io/badge/Zero_Dependencies-✓-green" alt="Zero Dependencies"></a>
 </p>
 
-## Overview
+## 🔍 Overview
 
 Solidis offers pre-defined extensions through its highly extensible architecture. This extensibility enables seamless addition of specialized commands while maintaining zero dependencies and enterprise-grade performance.
 
-## Supported Extensions
+## 🧩 Supported Extensions
 
 - **Spin Lock**
 
-## Requirements
+## ⚙️ Requirements
 
 - Same as [Solidis](https://github.com/vcms-io/solidis)
 
-## Installation
+## 📦 Installation
 
 ```bash
 # Using npm
@@ -49,7 +49,7 @@ yarn add @vcms-io/solidis-extensions
 pnpm add @vcms-io/solidis-extensions
 ```
 
-## Usage
+## 💡 Usage
 
 ### Spin Lock
 
@@ -119,7 +119,28 @@ const promises = Array.from({ length: 100 }).map(async () => {
 await Promise.all(promises);
 ```
 
-### Contribution Guidelines
+## 🤝 Contributing
+
+Solidis is an open-source project and we welcome contributions from the community. Here's how you can contribute:
+
+### 💻 Development Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/vcms-io/solidis-extensions.git
+cd solidis-extensions
+
+# Install dependencies
+npm install
+
+# Build the project
+npm run build
+
+# Run tests
+npm test
+```
+
+### 📜 Contribution Guidelines
 
 1. **Fork the Repository**: Start by forking the repository and then clone your fork.
 
@@ -137,20 +158,20 @@ await Promise.all(promises);
    - Reference any related issues
    - Add appropriate documentation
 
-### Code Quality Guidelines
+### ✅ Code Quality Guidelines
 
 - **TypeScript**: Use strict typing and avoid `any` types and `as` cast where possible
 - **Dependencies**: Avoid adding new dependencies unless absolutely necessary
 - **Performance**: Consider performance implications of your changes
 - **Bundle Size**: Keep the bundle size minimal
 
-### Release Process
+### 🚀 Release Process
 
 Solidis follows semantic versioning (SemVer):
 - **Patch (0.0.x)**: Bug fixes and minor changes that don't affect the API
 - **Minor (0.x.0)**: New features added in a backward compatible manner
 - **Major (x.0.0)**: Breaking changes to the public API
 
-## License
+## 📄 License
 
 Licensed under the MIT. See [LICENSE](/LICENSE) for more information.
