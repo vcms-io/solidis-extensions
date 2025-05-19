@@ -1,0 +1,46 @@
+{
+  "name": "@vcms-io/solidis-extensions",
+  "version": "0.0.0",
+  "author": "Jay Lee <jay@vendit.co.kr>",
+  "description": "Extensions for solidis",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vcms-io/solidis-extensions.git"
+  },
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "prepack": "npm run build",
+    "cleanup": "npm run --silent node:ts ./scripts/cleanup.ts",
+    "build": "npm run cleanup && tsc && npm run node:ts ./scripts/build.ts",
+    "lint": "concurrently --raw \"biome check --write\" \"tsc --noEmit\"",
+    "format": "biome format --write",
+    "node:ts": "node --import=./scripts/esm/register.js"
+  },
+  "types": "distributions/index.d.ts",
+  "main": "distributions/index.cjs",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./distributions/index.d.ts",
+        "default": "./distributions/index.mjs"
+      },
+      "require": {
+        "types": "./distributions/index.d.ts",
+        "default": "./distributions/index.cjs"
+      }
+    }
+  },
+  "files": [
+    "distributions/**/*.{d.ts,mjs,cjs}"
+  ],
+  "devDependencies": {
+    "@biomejs/biome": "1.9.2",
+    "@types/node": "^22.15.18",
+    "@vcms-io/solidis": "^0.0.3",
+    "chalk": "^5.4.1",
+    "concurrently": "^9.1.2",
+    "esbuild": "^0.25.4",
+    "typescript": "^5.8.3"
+  }
+}
