@@ -1,1 +1,2 @@
-export * from './domains/spin-lock/index.ts';
+export * from './domains/spinlock/index.ts';
+export * from './domains/redlock/index.ts';

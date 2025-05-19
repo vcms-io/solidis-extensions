@@ -30,7 +30,8 @@ Solidis offers pre-defined extensions through its highly extensible architecture
 
 ## 🧩 Supported Extensions
 
-- **Spin Lock**
+- **SpinLock** - [Documentation](/sources/domains/spinlock/README.md)
+- **RedLock** - [Documentation](/sources/domains/redlock/README.md)
 
 ## ⚙️ Requirements
 
@@ -47,76 +48,6 @@ yarn add @vcms-io/solidis-extensions
 
 # Using pnpm
 pnpm add @vcms-io/solidis-extensions
-```
-
-## 💡 Usage
-
-### Spin Lock
-
-#### With Basic Client
-
-Requires client manually extended with set & del commands
-
-```typescript
-import { SolidisClient } from '@vcms-io/solidis';
-import { set } from '@vcms-io/solidis/command/set';
-import { del } from '@vcms-io/solidis/command/del';
-import { spinLock } from '@vcms-io/solidis-extensions';
-
-import type { SolidisClientExtensions } from '@vcms-io/solidis';
-
-const extensions = {
-  set,
-  del,
-  spinLock,
-} satisfies SolidisClientExtensions;
-
-const client = new SolidisClient({
-  host: 'localhost',
-  port: 6379,
-}).extend(extensions);
-
-// All concurrent tasks will be serialized
-const promises = Array.from({ length: 100 }).map(async () => {
-  const { unlock } = await client.spinLock(`test`, {
-    logger: console,
-  });
-
-  await unlock();
-});
-
-await Promise.all(promises);
-```
-
-#### With Featured Client
-
-Just needs to be extended with a spinLock command
-
-```typescript
-import { SolidisFeaturedClient } from '@vcms-io/solidis/featured';
-import { spinLock } from '@vcms-io/solidis-extensions';
-
-import type { SolidisClientExtensions } from '@vcms-io/solidis';
-
-const extensions = {
-  spinLock,
-} satisfies SolidisClientExtensions;
-
-const client = new SolidisFeaturedClient({
-  host: 'localhost',
-  port: 6379,
-}).extend(extensions);
-
-// All concurrent tasks will be serialized
-const promises = Array.from({ length: 100 }).map(async () => {
-  const { unlock } = await client.spinLock(`test`, {
-    logger: console,
-  });
-
-  await unlock();
-});
-
-await Promise.all(promises);
 ```
 
 ## 🤝 Contributing
